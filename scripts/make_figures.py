@@ -29,7 +29,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 
 plt.rcParams.update({"font.family": "serif", "font.serif": ["Times New Roman", "DejaVu Serif"], "font.size": 9,
-                     "axes.linewidth": 0.6, "savefig.bbox": "tight"})
+                     # STIX math is Times-like, so axis labels with math match the Times text around them
+                     "mathtext.fontset": "stix", "pdf.fonttype": 42, "ps.fonttype": 42, "axes.linewidth": 0.6, "savefig.bbox": "tight"})
 GEO_SCEN = ["scenario32", "scenario33", "scenario34", "scenario31", "scenario35", "scenario1", "scenario2", "scenario5",
             "scenario6", "scenario8", "scenario9"]
 CAM_SCEN = ["scenario1", "scenario2", "scenario5", "scenario7", "scenario6", "scenario8", "scenario9"]
@@ -50,31 +51,32 @@ def short(s):
 def fig1():
     fig, ax = plt.subplots(figsize=(7.0, 2.0))
     ax.axis("off")
-    W, H = 0.155, 0.30
+    W, H = 0.19, 0.30
     nl = chr(10)
-    boxes = {"cam": (0.00, 0.58, "Camera frame"), "gps": (0.00, 0.12, "Reported vehicle" + nl + "position (GPS)"),
-             "det": (0.20, 0.58, "Vehicle detector"), "pri": (0.20, 0.12, "Position prior" + nl + "(bearing, boresight)"),
-             "sel": (0.42, 0.35, "Select the served" + nl + "vehicle's box"),
-             "map": (0.62, 0.35, "Camera map" + nl + "(pinhole model)"),
-             "out": (0.82, 0.35, "Served beam" + nl + "(top-k measured)")}
+    X = [0.0, 0.225, 0.45, 0.675, 0.90]         # box columns; arrows are derived from these
+    boxes = {"cam": (X[0], 0.58, "Camera frame"), "gps": (X[0], 0.12, "Reported vehicle" + nl + "position (GPS)"),
+             "det": (X[1], 0.58, "Vehicle detector"), "pri": (X[1], 0.12, "Position prior" + nl + "(bearing, boresight)"),
+             "sel": (X[2], 0.35, "Select the served" + nl + "vehicle's box"),
+             "map": (X[3], 0.35, "Camera map" + nl + "(pinhole model)"),
+             "out": (X[4], 0.35, "Served beam" + nl + "(top-$k$ measured)")}
     for x, y, t in boxes.values():
         ax.add_patch(plt.Rectangle((x, y), W, H, fill=False, lw=0.7))
-        ax.text(x + W / 2, y + H / 2, t, ha="center", va="center", fontsize=7)
+        ax.text(x + W / 2, y + H / 2, t, ha="center", va="center", fontsize=7.5)
 
     def arrow(a, b, **kw):
         ax.annotate("", xy=b, xytext=a, arrowprops=dict(arrowstyle="->", lw=0.7, **kw))
-    arrow((0.155, 0.73), (0.20, 0.73))
-    arrow((0.155, 0.27), (0.20, 0.27))
-    arrow((0.355, 0.73), (0.42, 0.60))
-    arrow((0.355, 0.27), (0.42, 0.40))
-    arrow((0.575, 0.50), (0.62, 0.50))
-    arrow((0.775, 0.50), (0.82, 0.50))
+    arrow((X[0] + W, 0.73), (X[1], 0.73))
+    arrow((X[0] + W, 0.27), (X[1], 0.27))
+    arrow((X[1] + W, 0.73), (X[2], 0.60))
+    arrow((X[1] + W, 0.27), (X[2], 0.40))
+    arrow((X[2] + W, 0.50), (X[3], 0.50))
+    arrow((X[3] + W, 0.50), (X[4], 0.50))
     # feedback: sweeps refit the prior and the map
-    ax.plot([0.895, 0.895, 0.278], [0.35, 0.03, 0.03], color="k", lw=0.6, ls="--")
-    arrow((0.278, 0.03), (0.278, 0.12), ls="--")
-    arrow((0.697, 0.03), (0.697, 0.35), ls="--")
-    ax.text(0.59, -0.075, "full sweep every K frames: refit prior and map", ha="center", fontsize=6.5)
-    ax.set_xlim(-0.01, 0.99)
+    ax.plot([X[4] + W / 2, X[4] + W / 2, X[1] + W / 2], [0.35, 0.03, 0.03], color="k", lw=0.6, ls="--")
+    arrow((X[1] + W / 2, 0.03), (X[1] + W / 2, 0.12), ls="--")
+    arrow((X[3] + W / 2, 0.03), (X[3] + W / 2, 0.35), ls="--")
+    ax.text((X[1] + X[4] + W) / 2, -0.075, "periodic full sweep: refit prior and map", ha="center", fontsize=7.5)
+    ax.set_xlim(-0.01, X[4] + W + 0.01)
     ax.set_ylim(-0.12, 0.92)
     save(fig, "fig1_pipeline")
 
@@ -85,7 +87,7 @@ def fig2():
     from tta_beam.data import load_scenario
     from tta_beam.models import PhysicsPrior
     data, colors = {}, plt.cm.tab20(np.linspace(0, 1, len(GEO_SCEN)))
-    fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.0, 2.8))
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.0, 2.9), gridspec_kw={"wspace": 0.38})
     for i, s in enumerate(GEO_SCEN):
         d = load_scenario(s)
         g, y = torch.as_tensor(d["gps"]), torch.as_tensor(d["y"])
@@ -110,7 +112,10 @@ def fig2():
     a2.plot([-1, 1], [-1, 1], color="0.3", lw=0.6)
     for ax, lab in ((a1, "(a)"), (a2, "(b)")):
         ax.text(0.02, 0.95, lab, transform=ax.transAxes, fontsize=9, va="top")
-    a1.legend(fontsize=5.5, markerscale=6, ncol=2, frameon=False, loc="lower right")
+    # one row under both panels, clear of the data
+    fig.legend(*a1.get_legend_handles_labels(), title="scenario", title_fontsize=7.5, fontsize=7.5, markerscale=6,
+               ncol=len(GEO_SCEN), frameon=False, loc="upper center", bbox_to_anchor=(0.5, 0.0),
+               handletextpad=0.1, columnspacing=1.0)
     (R / "fig2_geometry.json").write_text(json.dumps(data, indent=1))
     save(fig, "fig2_geometry")
 
@@ -139,7 +144,7 @@ def fig3():
     im = ax.imshow(W3, vmin=0, vmax=1, cmap="Greys")
     for i in range(len(CAM_SCEN)):
         for j in range(len(CAM_SCEN)):
-            ax.text(j, i, f"{W3[i, j]:.2f}", ha="center", va="center", fontsize=6.5, color="white" if W3[i, j] > 0.6 else "black")
+            ax.text(j, i, f"{W3[i, j]:.2f}", ha="center", va="center", fontsize=7, color="white" if W3[i, j] > 0.6 else "black")
     ax.set_xticks(range(len(CAM_SCEN)), [short(s) for s in CAM_SCEN])
     ax.set_yticks(range(len(CAM_SCEN)), [short(s) for s in CAM_SCEN])
     ax.set_xlabel("applied to scenario")
@@ -159,7 +164,8 @@ NAMES = {"sense-geo": "camera map, zero target labels", "sense-geo+calib": "came
 
 def fig4():
     rows = json.loads((R / "overhead_trackB.json").read_text())
-    fig, ax = plt.subplots(figsize=(3.5, 2.6))
+    # full width with the legend at the side: a one-column version needs a legend taller than the plot
+    fig, ax = plt.subplots(figsize=(4.6, 2.3))
     styles = {"sense-geo": "k-", "sense-geo+calib": "k--", "offset-ma": "k:", "cam-assoc": "k-.",
               "calib+gate+norm": "C0-", "calib+supft": "C0--", "supft": "C1-", "tent": "C2-", "source": "C3-", "sweep-hold": "C4-"}
     for m, st in styles.items():
@@ -178,8 +184,34 @@ def fig4():
     ax.set_ylim(bottom=0)
     ax.set_xlabel("beam measurements per frame")
     ax.set_ylabel("received-power loss (dB)")
-    ax.legend(fontsize=6, frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=2)
+    ax.legend(fontsize=7.5, frameon=False, loc="center left", bbox_to_anchor=(1.02, 0.5), ncol=1)
     save(fig, "fig4_overhead")
+
+
+# ------------------------------------------------------------------ figure 5: pinhole map vs MLP on x
+def fig5():
+    rows = json.loads((R / "xmlp_curve.json").read_text())
+    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.5), gridspec_kw={"wspace": 0.28})
+    styles = {"sense-geo": ("k", "--", "pinhole map, no target labels"),
+              "sense-geo+calib": ("k", "-", "pinhole map refitted on sweeps"),
+              "xmlp": ("C0", "--", "MLP on the same input, no target labels"),
+              "xmlp+ft": ("C0", "-", "MLP fine-tuned on the same sweeps")}
+    for ax, (stream, title) in zip(axes, (("track_b", "(a) Track B, same unit"),
+                                          ("cross_unit", "(b) cross-unit"))):
+        for m, (c, ls, lab) in styles.items():
+            rr = sorted([r for r in rows if r["stream"] == stream and r["method"] == m], key=lambda r: r["K"])
+            ax.errorbar([r["K"] for r in rr], [r["ploss_db"] for r in rr], yerr=[r["ploss_db_std"] for r in rr],
+                        color=c, ls=ls, lw=0.9, marker="o", ms=2.5, capsize=1.5, label=lab)
+        ax.set_xscale("log")
+        ax.set_xticks([10, 20, 50, 100, 200], ["10", "20", "50", "100", "200"])
+        ax.minorticks_off()
+        ax.set_xlabel("frames between full sweeps")
+        ax.set_ylim(bottom=0)
+        ax.set_title(title, fontsize=9, loc="left")
+    axes[0].set_ylabel("received-power loss (dB)")
+    fig.legend(*axes[0].get_legend_handles_labels(), fontsize=7.5, frameon=False, ncol=2, loc="upper center",
+               bbox_to_anchor=(0.5, -0.06))
+    save(fig, "fig5_mlp_control")
 
 
 # ------------------------------------------------------------------ detector vs annotation (numbers only)
@@ -200,6 +232,6 @@ def detector_match():
 
 
 if __name__ == "__main__":
-    which = sys.argv[1:] or ["fig1", "fig2", "fig3", "fig4", "detector_match"]
+    which = sys.argv[1:] or ["fig1", "fig2", "fig3", "fig4", "fig5", "detector_match"]
     for w in which:
         globals()[w]()

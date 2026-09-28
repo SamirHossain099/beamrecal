@@ -367,5 +367,86 @@ class DetAssocFixed(DetAssoc):
         super().__init__(model, src, refit_map=False, **kw)
 
 
+class XMLP(Method):
+    """Control for the camera map: a learned map on the SAME input, the horizontal image coordinate of the
+    served vehicle. A small MLP (1 -> 64 -> 64 -> 64 beams) is trained on the source scenario with
+    Gaussian-smoothed labels, as the learned predictors are; ZERO target labels. If it transfers as well as
+    the four-parameter pinhole map, the transfer comes from the input, not from the parameterization."""
+    needs_source = True
+    name = "xmlp"
+
+    def __init__(self, model, src=None, epochs=400, lr=3e-3, sigma=2.0, **kw):
+        self.dev = next(model.parameters()).device
+        self.key, _ = _sensor(src)
+        self.net = torch.nn.Sequential(torch.nn.Linear(1, 64), torch.nn.ReLU(), torch.nn.Linear(64, 64),
+                                       torch.nn.ReLU(), torch.nn.Linear(64, 64)).to(self.dev)
+        self.sigma = sigma
+        f, y = np.asarray(src[self.key], float), np.asarray(src["y"])
+        ok = np.isfinite(f)
+        self._train(f[ok], y[ok], epochs, lr)
+
+    def _soft(self, y):
+        grid = torch.arange(64, device=self.dev)[None, :].float()
+        t = -((grid - torch.as_tensor(y, device=self.dev).float()[:, None]) ** 2) / (2 * self.sigma**2)
+        return torch.softmax(t, 1)
+
+    def _train(self, f, y, steps, lr, bs=256):
+        opt = torch.optim.Adam(self.net.parameters(), lr=lr)
+        X = torch.as_tensor(f, dtype=torch.float32, device=self.dev)[:, None]
+        T = self._soft(y)
+        self.net.train()
+        for _ in range(steps):
+            idx = torch.randint(len(X), (min(bs, len(X)),), device=self.dev)
+            loss = -(T[idx] * torch.log_softmax(self.net(X[idx]), 1)).sum(1).mean()
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+        self.net.eval()
+
+    @torch.no_grad()
+    def step(self, b):
+        f = b[self.key]
+        f = f if torch.is_tensor(f) else torch.as_tensor(f)
+        f = f.to(self.dev).float()
+        bad = ~torch.isfinite(f)
+        lg = self.net(torch.nan_to_num(f, nan=0.0)[:, None])
+        lg[bad] = 0.0                     # no box: flat, exactly as the camera map does
+        return lg
+
+
+class XMLPFT(XMLP):
+    """The same MLP, fine-tuned online on the sweep labels (replay buffer of the last `buffer` labels,
+    `steps` Adam steps per sweep batch). Compared with the camera map refitted on the same sweeps."""
+    name = "xmlp+ft"
+
+    def __init__(self, model, src=None, ft_lr=3e-3, steps=10, buffer=200, **kw):
+        super().__init__(model, src, **kw)
+        self.ft_lr, self.steps, self.buffer = ft_lr, steps, buffer
+        self.opt = torch.optim.Adam(self.net.parameters(), lr=ft_lr)
+        self.f, self.y = [], []
+
+    def feedback(self, b, fb):
+        if not fb["sweep"].any():
+            return
+        f = b[self.key][fb["sweep"]]
+        f = (f if torch.is_tensor(f) else torch.as_tensor(f)).cpu().numpy()
+        y = fb["y_sweep"].cpu().numpy()
+        ok = np.isfinite(f)
+        self.f = (self.f + list(f[ok]))[-self.buffer:]
+        self.y = (self.y + list(y[ok]))[-self.buffer:]
+        if not self.f:
+            return
+        X = torch.as_tensor(np.array(self.f), dtype=torch.float32, device=self.dev)[:, None]
+        T = self._soft(np.array(self.y))
+        self.net.train()
+        for _ in range(self.steps):
+            loss = -(T * torch.log_softmax(self.net(X), 1)).sum(1).mean()
+            self.opt.zero_grad()
+            loss.backward()
+            self.opt.step()
+        self.net.eval()
+
+
 GEO_METHODS = {c.name: c for c in (SweepHold, CamGeo, SenseGeoCal, OffsetMA, GpsSelfCal, GeoFuse, GeoFuseSelfCal,
-                                   CamAssoc, CamAssocSelfCal, DetAssoc, DetAssocSelfCal, DetAssocFixed)}
+                                   CamAssoc, CamAssocSelfCal, DetAssoc, DetAssocSelfCal, DetAssocFixed,
+                                   XMLP, XMLPFT)}

@@ -84,34 +84,19 @@
   "text": "0.15",
   "source": "headline difference, DBA"
  },
- "tta_best_loss_A": {
-  "value": 1.88,
-  "text": "1.88",
-  "source": "headline best TTA loss"
- },
- "source_loss_A": {
-  "value": 1.939,
-  "text": "1.94",
-  "source": "headline source loss"
- },
  "ft_top1_A": {
   "value": 0.228,
   "text": "0.23",
   "source": "headline supft top-1"
  },
- "tta_best_loss_B": {
-  "value": 3.187,
-  "text": "3.19",
-  "source": "headline best TTA loss"
- },
- "source_loss_B": {
-  "value": 3.24,
-  "text": "3.24",
-  "source": "headline source loss"
- },
  "ft_top1_B": {
   "value": 0.169,
   "text": "0.17",
+  "source": "headline supft top-1"
+ },
+ "ft_top1_X": {
+  "value": 0.239,
+  "text": "0.24",
   "source": "headline supft top-1"
  },
  "oh_camera_0meas": {
@@ -343,6 +328,96 @@
   "value": 5.071,
   "text": "5.07",
   "source": "ablation last sweep held"
+ },
+ "knn_w3_s3": {
+  "value": 0.7299703264094956,
+  "text": "0.73",
+  "source": "within-site 5-NN within +-3, held-out passes, scenario 3"
+ },
+ "knn_w3_s4": {
+  "value": 0.5940054495912807,
+  "text": "0.59",
+  "source": "same, scenario 4"
+ },
+ "knn_w3_rest_min": {
+  "value": 0.7907949790794979,
+  "text": "0.79",
+  "source": "same, the other twelve scenarios"
+ },
+ "knn_w3_rest_max": {
+  "value": 0.9923664122137404,
+  "text": "0.99",
+  "source": "same, the other twelve scenarios"
+ },
+ "tta_top1_max": {
+  "value": 0.079,
+  "text": "0.079",
+  "source": "highest top-1 of any TTA method on any stream"
+ },
+ "tta_gain_X": {
+  "value": 0.7480000000000002,
+  "text": "0.75",
+  "source": "loss reduction, cross-unit"
+ },
+ "tta_best_loss_min": {
+  "value": 1.868,
+  "text": "1.87",
+  "source": "best TTA method's loss, lowest over streams"
+ },
+ "tta_best_loss_max": {
+  "value": 2.922,
+  "text": "2.92",
+  "source": "best TTA method's loss, highest over streams"
+ },
+ "xmlp_bs1_w3_min": {
+  "value": 0.9485059472004641,
+  "text": "0.95",
+  "source": "MLP zero-label within unit BS1, within +-3"
+ },
+ "xmlp_bs1_w3_max": {
+  "value": 0.9961879134432111,
+  "text": "1.00",
+  "source": "same"
+ },
+ "xmlp_zero_loss_B": {
+  "value": 0.5521608871644963,
+  "text": "0.55",
+  "source": "MLP, no target labels, Track B"
+ },
+ "pin_zero_loss_B": {
+  "value": 0.5098535338818658,
+  "text": "0.51",
+  "source": "pinhole, no target labels, Track B"
+ },
+ "refit_gap_min": {
+  "value": 0.06173015831976114,
+  "text": "0.06",
+  "source": "MLP fine-tuned minus pinhole refit, dB, over streams and intervals"
+ },
+ "refit_gap_max": {
+  "value": 0.2611410667081492,
+  "text": "0.26",
+  "source": "same"
+ },
+ "xmlp_ft_loss_B_K200": {
+  "value": 0.7087967415593176,
+  "text": "0.71",
+  "source": "MLP fine-tuned, Track B, K=200"
+ },
+ "pin_refit_loss_B_K200": {
+  "value": 0.4476556748511684,
+  "text": "0.45",
+  "source": "pinhole refit, K=200"
+ },
+ "xmlp_ft_top1_X": {
+  "value": 0.2715069104125492,
+  "text": "0.272",
+  "source": "MLP fine-tuned, cross-unit top-1, K=20"
+ },
+ "pin_refit_top1_X": {
+  "value": 0.21556445267502397,
+  "text": "0.216",
+  "source": "pinhole refit, same"
  },
  "lat_det_min": {
   "value": 0.46731562179047614,

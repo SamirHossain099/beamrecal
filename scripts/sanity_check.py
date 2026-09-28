@@ -30,6 +30,7 @@ def knn_predict(train_x, train_y, test_x, k=5):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--scenarios", nargs="+", default=None)
+    ap.add_argument("--out", default="sanity_knn.json", help="file name under results/")
     a = ap.parse_args()
     names = a.scenarios or sorted(p.stem for p in CACHE.glob("scenario*.npz"))
     data = {n: load_scenario(n) for n in names}
@@ -68,7 +69,7 @@ def main():
         print(f"{src:11s}" + "".join(f"  {mat[src][c]['median_dbeam']:+4.0f}/{mat[src][c]['within3']:.2f}/"
                                      f"{mat[src][c]['within3_after_median_shift']:.2f}" for c in names))
     (ROOT / "results").mkdir(exist_ok=True)
-    (ROOT / "results" / "sanity_knn.json").write_text(json.dumps(mat, indent=1))
+    (ROOT / "results" / a.out).write_text(json.dumps(mat, indent=1))
 
     try:
         import matplotlib

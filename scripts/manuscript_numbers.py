@@ -77,11 +77,16 @@ def main():
     put("within_gps_max", max(g), "{:.2f}", "E0 within-site gps top-1")
 
     # --- source models of the three streams (within-site val top-1) ------------------------------------
-    import torch
-    vals = []
-    for ck in list((ROOT / "checkpoints").glob("src_scenario32_gps-cam_anchored_s*.pt")) + \
-            list((ROOT / "checkpoints").glob("src_scenario1_gps-cam_anchored_s*.pt")):
-        vals.append(torch.load(ck, map_location="cpu", weights_only=False)["val"]["top1"])
+    # read from the checkpoints when they exist (they are trained on DeepSense data and not released) and
+    # cached to results/source_val.json, so the public repository reproduces this number without them
+    cache = R / "source_val.json"
+    cks = list((ROOT / "checkpoints").glob("src_scenario32_gps-cam_anchored_s*.pt")) + \
+        list((ROOT / "checkpoints").glob("src_scenario1_gps-cam_anchored_s*.pt"))
+    if cks:
+        import torch
+        sv = {ck.name: torch.load(ck, map_location="cpu", weights_only=False)["val"]["top1"] for ck in sorted(cks)}
+        cache.write_text(json.dumps(sv, indent=1))
+    vals = list(json.loads(cache.read_text()).values())
     put("source_within_min", min(vals), "{:.2f}", "anchored source checkpoints (32, 1), 3 seeds each")
     put("source_within_max", max(vals), "{:.2f}", "anchored source checkpoints (32, 1)")
 
@@ -101,9 +106,7 @@ def main():
             "{:.2f}", "headline difference, dB")
         put(f"det_minus_ft_dba_{n}", h(s, "camera + GPS association")["dba"] - h(s, "supervised online FT")["dba"],
             "{:.2f}", "headline difference, DBA")
-    for s, n in (("track_a", "A"), ("track_b", "B")):
-        put(f"tta_best_loss_{n}", h(s, "best generic TTA")["ploss_db"], "{:.2f}", "headline best TTA loss")
-        put(f"source_loss_{n}", h(s, "source")["ploss_db"], "{:.2f}", "headline source loss")
+    for s, n in (("track_a", "A"), ("track_b", "B"), ("cross_unit", "X")):
         put(f"ft_top1_{n}", h(s, "supervised online FT")["top1"], "{:.2f}", "headline supft top-1")
 
     # --- overhead (seed 0) --------------------------------------------------------------------------------
@@ -198,6 +201,43 @@ def main():
     hold = [abl[(s, "sweep-hold")]["ploss_db"] for s in ("track_b", "cross_unit")]
     put("abl_hold_loss_min", min(hold), "{:.2f}", "ablation last sweep held")
     put("abl_hold_loss_max", max(hold), "{:.2f}", "ablation last sweep held")
+
+    # --- data exclusion: within-site position-to-beam consistency (results/sanity_knn_all14.json) -------
+    kn = json.loads((R / "sanity_knn_all14.json").read_text())
+    w3 = {k: kn[k][k]["within3"] for k in kn}
+    put("knn_w3_s3", w3["scenario3"], "{:.2f}", "within-site 5-NN within +-3, held-out passes, scenario 3")
+    put("knn_w3_s4", w3["scenario4"], "{:.2f}", "same, scenario 4")
+    rest = [v for k, v in w3.items() if k not in ("scenario3", "scenario4")]
+    put("knn_w3_rest_min", min(rest), "{:.2f}", "same, the other twelve scenarios")
+    put("knn_w3_rest_max", max(rest), "{:.2f}", "same, the other twelve scenarios")
+
+    # --- every TTA method on every stream (Table 4, results/tta6.json from scripts/tta_table.py) --------
+    tt = json.loads((R / "tta6.json").read_text())
+    tta = [r for r in tt if r["method"] != "source"]
+    src_loss = {r["stream"]: r["ploss_db"] for r in tt if r["method"] == "source"}
+    put("tta_top1_max", max(r["top1"] for r in tta), "{:.3f}", "highest top-1 of any TTA method on any stream")
+    best = {s: min(r["ploss_db"] for r in tta if r["stream"] == s) for s in src_loss}
+    put("tta_gain_X", src_loss["cross_unit"] - best["cross_unit"], "{:.2f}", "loss reduction, cross-unit")
+    put("tta_best_loss_min", min(best.values()), "{:.2f}", "best TTA method's loss, lowest over streams")
+    put("tta_best_loss_max", max(best.values()), "{:.2f}", "best TTA method's loss, highest over streams")
+
+    # --- MLP on the camera coordinate: the control for the pinhole map (xmlp_transfer.json, xmlp_curve.json) --
+    xt = json.loads((R / "xmlp_transfer.json").read_text())
+    put("xmlp_bs1_w3_min", min(xt["bs1_offdiag_within3"]), "{:.2f}", "MLP zero-label within unit BS1, within +-3")
+    put("xmlp_bs1_w3_max", max(xt["bs1_offdiag_within3"]), "{:.2f}", "same")
+    cv = {(r["stream"], r["K"], r["method"]): r for r in json.loads((R / "xmlp_curve.json").read_text())}
+    ks = sorted({k for _, k, _ in cv})
+    put("xmlp_zero_loss_B", cv[("track_b", 20, "xmlp")]["ploss_db"], "{:.2f}", "MLP, no target labels, Track B")
+    put("pin_zero_loss_B", cv[("track_b", 20, "sense-geo")]["ploss_db"], "{:.2f}", "pinhole, no target labels, Track B")
+    gaps = [cv[(s, k, "xmlp+ft")]["ploss_db"] - cv[(s, k, "sense-geo+calib")]["ploss_db"]
+            for s in ("track_b", "cross_unit") for k in ks]
+    assert min(gaps) > 0, "the pinhole refit no longer wins at every interval; rewrite Section 5.3"
+    put("refit_gap_min", min(gaps), "{:.2f}", "MLP fine-tuned minus pinhole refit, dB, over streams and intervals")
+    put("refit_gap_max", max(gaps), "{:.2f}", "same")
+    put("xmlp_ft_loss_B_K200", cv[("track_b", 200, "xmlp+ft")]["ploss_db"], "{:.2f}", "MLP fine-tuned, Track B, K=200")
+    put("pin_refit_loss_B_K200", cv[("track_b", 200, "sense-geo+calib")]["ploss_db"], "{:.2f}", "pinhole refit, K=200")
+    put("xmlp_ft_top1_X", cv[("cross_unit", 20, "xmlp+ft")]["top1"], "{:.3f}", "MLP fine-tuned, cross-unit top-1, K=20")
+    put("pin_refit_top1_X", cv[("cross_unit", 20, "sense-geo+calib")]["top1"], "{:.3f}", "pinhole refit, same")
 
     # --- latency ----------------------------------------------------------------------------------------
     lat = [json.loads(f.read_text())["methods"]["det-assoc"]["latency_ms_per_frame"] for tag in ("_D1_trackA_det_K20", "_D2_trackB_det_K20", "_D3_crossunit_det_K20")
