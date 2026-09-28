@@ -1,0 +1,60 @@
+{
+ "ckpt": "N:/Projects/isac/01-tta-beam-prediction/checkpoints/src_scenario32_gps-cam_s0.pt",
+ "source": [
+  "scenario32"
+ ],
+ "stream": [
+  "scenario33",
+  "scenario34",
+  "scenario31",
+  "scenario35"
+ ],
+ "bs": 16,
+ "sweep_every": 20,
+ "seed": 0,
+ "kw": [
+  "lr=1e-3",
+  "params=all"
+ ],
+ "device": "cpu",
+ "max_frames": 800,
+ "methods": {
+  "supft": {
+   "scenario33": {
+    "top1": 0.0975,
+    "top3": 0.325,
+    "dba": 0.539500000923872,
+    "ploss_db": 1.3121039529144765,
+    "n": 800
+   },
+   "scenario34": {
+    "top1": 0.055,
+    "top3": 0.11125,
+    "dba": 0.29633333906531334,
+    "ploss_db": 2.2482279309630395,
+    "n": 800
+   },
+   "scenario31": {
+    "top1": 0.15625,
+    "top3": 0.29,
+    "dba": 0.555500004068017,
+    "ploss_db": 0.6513271080702543,
+    "n": 800
+   },
+   "scenario35": {
+    "top1": 0.12125,
+    "top3": 0.2575,
+    "dba": 0.4525000014901161,
+    "ploss_db": 0.49716213952749966,
+    "n": 800
+   },
+   "mean": {
+    "top1": 0.10749999999999998,
+    "top3": 0.24593750000000003,
+    "dba": 0.4609583363868296,
+    "ploss_db": 1.1772052828688175
+   },
+   "latency_ms_per_frame": 6.671040628134506
+  }
+ }
+}

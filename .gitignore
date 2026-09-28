@@ -1,0 +1,10 @@
+data/
+checkpoints/
+__pycache__/
+*.pyc
+node_modules/
+MANUSCRIPT.docx
+references-missing.ris
+zotero_keys.json
+results/oh_seeds_err.txt
+public-repo/

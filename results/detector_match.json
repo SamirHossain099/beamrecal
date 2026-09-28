@@ -1,0 +1,56 @@
+{
+ "scenario1": {
+  "frames": 2406,
+  "median_dx": 0.0018075406551361084,
+  "within_0.02": 0.9995843724023276,
+  "detections_per_frame": 4.133139776026545
+ },
+ "scenario2": {
+  "frames": 2973,
+  "median_dx": 0.0019304454326629639,
+  "within_0.02": 0.9973091153716784,
+  "detections_per_frame": 2.9092131809011432
+ },
+ "scenario5": {
+  "frames": 2298,
+  "median_dx": 0.001820594072341919,
+  "within_0.02": 0.9995648389904265,
+  "detections_per_frame": 4.699130434782608
+ },
+ "scenario6": {
+  "frames": 913,
+  "median_dx": 0.003953263163566589,
+  "within_0.02": 0.9934282584884995,
+  "detections_per_frame": 1.2568306010928962
+ },
+ "scenario7": {
+  "frames": 845,
+  "median_dx": 0.002112269401550293,
+  "within_0.02": 1.0,
+  "detections_per_frame": 2.297423887587822
+ },
+ "scenario8": {
+  "frames": 4009,
+  "median_dx": 0.004851579666137695,
+  "within_0.02": 0.985781990521327,
+  "detections_per_frame": 1.2228543161019045
+ },
+ "scenario31": {
+  "detections_per_frame": 2.854962920707359
+ },
+ "scenario32": {
+  "detections_per_frame": 10.519010819165379
+ },
+ "scenario33": {
+  "detections_per_frame": 6.249937201708113
+ },
+ "scenario34": {
+  "detections_per_frame": 3.6600585717503944
+ },
+ "scenario35": {
+  "detections_per_frame": 12.0
+ },
+ "scenario9": {
+  "detections_per_frame": 1.1866197183098592
+ }
+}

@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use beamrecal, please cite it as below."
+title: "beamrecal: geometric recalibration for sensing-aided millimeter-wave beam prediction under deployment shift"
+abstract: >-
+  Learned sensing-aided beam predictors do not transfer between DeepSense 6G sites, and test-time
+  adaptation does not repair them, because the dominant shift rotates and translates the map from sensed
+  geometry to beam index. beamrecal implements a physically parameterized position prior and camera map
+  that are recalibrated from periodic beam sweeps, a deployable camera pipeline with a pretrained
+  detector and position-based identification, the learned and test-time adaptation baselines, and the
+  online streaming evaluation that scores every prediction before its feedback arrives.
+type: software
+authors:
+  - given-names: Samir
+    family-names: Hossain
+    orcid: "https://orcid.org/0009-0003-8986-0946"
+    affiliation: "Department of Electrical and Computer Engineering, Texas Tech University"
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/SamirHossain099/beamrecal"
+keywords:
+  - beam prediction
+  - millimeter wave
+  - integrated sensing and communication
+  - DeepSense 6G
+  - test-time adaptation
+  - distribution shift
+  - calibration

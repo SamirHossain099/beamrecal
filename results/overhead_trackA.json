@@ -1,0 +1,974 @@
+[
+ {
+  "method": "calib",
+  "K": 0,
+  "k": 1,
+  "overhead_beams_per_frame": 0.0,
+  "loss_db": 1.8659414284012181,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 0,
+  "k": 3,
+  "overhead_beams_per_frame": 3.0,
+  "loss_db": 1.5179526934361862,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 0,
+  "k": 5,
+  "overhead_beams_per_frame": 5.0,
+  "loss_db": 1.2992907971689287,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 10,
+  "k": 1,
+  "overhead_beams_per_frame": 6.4,
+  "loss_db": 0.6346974556176298,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 10,
+  "k": 3,
+  "overhead_beams_per_frame": 9.4,
+  "loss_db": 0.40070112441120925,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 10,
+  "k": 5,
+  "overhead_beams_per_frame": 11.4,
+  "loss_db": 0.27805084267312974,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 20,
+  "k": 1,
+  "overhead_beams_per_frame": 3.2,
+  "loss_db": 0.609094070853629,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 20,
+  "k": 3,
+  "overhead_beams_per_frame": 6.2,
+  "loss_db": 0.37711337639704756,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 20,
+  "k": 5,
+  "overhead_beams_per_frame": 8.2,
+  "loss_db": 0.2501328080737218,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 50,
+  "k": 1,
+  "overhead_beams_per_frame": 1.28,
+  "loss_db": 0.6258345750139309,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 50,
+  "k": 3,
+  "overhead_beams_per_frame": 4.28,
+  "loss_db": 0.40238171713545207,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 50,
+  "k": 5,
+  "overhead_beams_per_frame": 6.28,
+  "loss_db": 0.281972499472747,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 100,
+  "k": 1,
+  "overhead_beams_per_frame": 0.64,
+  "loss_db": 0.6953780775974796,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 100,
+  "k": 3,
+  "overhead_beams_per_frame": 3.64,
+  "loss_db": 0.4477072954155159,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 100,
+  "k": 5,
+  "overhead_beams_per_frame": 5.64,
+  "loss_db": 0.3179439209402129,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 200,
+  "k": 1,
+  "overhead_beams_per_frame": 0.32,
+  "loss_db": 0.8940149862836506,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 200,
+  "k": 3,
+  "overhead_beams_per_frame": 3.32,
+  "loss_db": 0.6194597726554264,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib",
+  "K": 200,
+  "k": 5,
+  "overhead_beams_per_frame": 5.32,
+  "loss_db": 0.46681915610210045,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 0,
+  "k": 1,
+  "overhead_beams_per_frame": 0.0,
+  "loss_db": 2.2319277132215873,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 0,
+  "k": 3,
+  "overhead_beams_per_frame": 3.0,
+  "loss_db": 1.7154985391828825,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 0,
+  "k": 5,
+  "overhead_beams_per_frame": 5.0,
+  "loss_db": 1.5068900940380807,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 10,
+  "k": 1,
+  "overhead_beams_per_frame": 6.4,
+  "loss_db": 0.2700202283924186,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 10,
+  "k": 3,
+  "overhead_beams_per_frame": 9.4,
+  "loss_db": 0.10667449652797115,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 10,
+  "k": 5,
+  "overhead_beams_per_frame": 11.4,
+  "loss_db": 0.0719158412396785,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 20,
+  "k": 1,
+  "overhead_beams_per_frame": 3.2,
+  "loss_db": 0.30515606148368624,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 20,
+  "k": 3,
+  "overhead_beams_per_frame": 6.2,
+  "loss_db": 0.1279547287300699,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 20,
+  "k": 5,
+  "overhead_beams_per_frame": 8.2,
+  "loss_db": 0.088123403358292,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 50,
+  "k": 1,
+  "overhead_beams_per_frame": 1.28,
+  "loss_db": 0.348946607985728,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 50,
+  "k": 3,
+  "overhead_beams_per_frame": 4.28,
+  "loss_db": 0.1809237670818307,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 50,
+  "k": 5,
+  "overhead_beams_per_frame": 6.28,
+  "loss_db": 0.11581132842322506,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 100,
+  "k": 1,
+  "overhead_beams_per_frame": 0.64,
+  "loss_db": 0.4763699728276103,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 100,
+  "k": 3,
+  "overhead_beams_per_frame": 3.64,
+  "loss_db": 0.27370028563847437,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 100,
+  "k": 5,
+  "overhead_beams_per_frame": 5.64,
+  "loss_db": 0.21268777063528868,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 200,
+  "k": 1,
+  "overhead_beams_per_frame": 0.32,
+  "loss_db": 0.815508895126354,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 200,
+  "k": 3,
+  "overhead_beams_per_frame": 3.32,
+  "loss_db": 0.5549971095745027,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+gate+norm",
+  "K": 200,
+  "k": 5,
+  "overhead_beams_per_frame": 5.32,
+  "loss_db": 0.46167476808950136,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 0,
+  "k": 1,
+  "overhead_beams_per_frame": 0.0,
+  "loss_db": 1.8659414284012181,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 0,
+  "k": 3,
+  "overhead_beams_per_frame": 3.0,
+  "loss_db": 1.5179526934361862,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 0,
+  "k": 5,
+  "overhead_beams_per_frame": 5.0,
+  "loss_db": 1.2992907971689287,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 10,
+  "k": 1,
+  "overhead_beams_per_frame": 6.4,
+  "loss_db": 0.3220847868987381,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 10,
+  "k": 3,
+  "overhead_beams_per_frame": 9.4,
+  "loss_db": 0.11961148752310996,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 10,
+  "k": 5,
+  "overhead_beams_per_frame": 11.4,
+  "loss_db": 0.07730287162536896,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 20,
+  "k": 1,
+  "overhead_beams_per_frame": 3.2,
+  "loss_db": 0.33514372195121456,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 20,
+  "k": 3,
+  "overhead_beams_per_frame": 6.2,
+  "loss_db": 0.12874472137686724,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 20,
+  "k": 5,
+  "overhead_beams_per_frame": 8.2,
+  "loss_db": 0.07255988345921181,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 50,
+  "k": 1,
+  "overhead_beams_per_frame": 1.28,
+  "loss_db": 0.42915142606430556,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 50,
+  "k": 3,
+  "overhead_beams_per_frame": 4.28,
+  "loss_db": 0.21176873590609518,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 50,
+  "k": 5,
+  "overhead_beams_per_frame": 6.28,
+  "loss_db": 0.13916803171524308,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 100,
+  "k": 1,
+  "overhead_beams_per_frame": 0.64,
+  "loss_db": 0.553328204006305,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 100,
+  "k": 3,
+  "overhead_beams_per_frame": 3.64,
+  "loss_db": 0.2740827370108504,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 100,
+  "k": 5,
+  "overhead_beams_per_frame": 5.64,
+  "loss_db": 0.18216438518485228,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 200,
+  "k": 1,
+  "overhead_beams_per_frame": 0.32,
+  "loss_db": 0.7812085593588246,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 200,
+  "k": 3,
+  "overhead_beams_per_frame": 3.32,
+  "loss_db": 0.5177105044145245,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "calib+supft",
+  "K": 200,
+  "k": 5,
+  "overhead_beams_per_frame": 5.32,
+  "loss_db": 0.3869727055570473,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 0,
+  "k": 1,
+  "overhead_beams_per_frame": 0.0,
+  "loss_db": 2.037709289627125,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 0,
+  "k": 3,
+  "overhead_beams_per_frame": 3.0,
+  "loss_db": 1.6761148039368368,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 0,
+  "k": 5,
+  "overhead_beams_per_frame": 5.0,
+  "loss_db": 1.4953928473482967,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 10,
+  "k": 1,
+  "overhead_beams_per_frame": 6.4,
+  "loss_db": 2.037709289627125,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 10,
+  "k": 3,
+  "overhead_beams_per_frame": 9.4,
+  "loss_db": 1.6761148039368368,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 10,
+  "k": 5,
+  "overhead_beams_per_frame": 11.4,
+  "loss_db": 1.4953928473482967,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 20,
+  "k": 1,
+  "overhead_beams_per_frame": 3.2,
+  "loss_db": 2.037709289627125,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 20,
+  "k": 3,
+  "overhead_beams_per_frame": 6.2,
+  "loss_db": 1.6761148039368368,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 20,
+  "k": 5,
+  "overhead_beams_per_frame": 8.2,
+  "loss_db": 1.4953928473482967,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 50,
+  "k": 1,
+  "overhead_beams_per_frame": 1.28,
+  "loss_db": 2.037709289627125,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 50,
+  "k": 3,
+  "overhead_beams_per_frame": 4.28,
+  "loss_db": 1.6761148039368368,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 50,
+  "k": 5,
+  "overhead_beams_per_frame": 6.28,
+  "loss_db": 1.4953928473482967,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 100,
+  "k": 1,
+  "overhead_beams_per_frame": 0.64,
+  "loss_db": 2.037709289627125,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 100,
+  "k": 3,
+  "overhead_beams_per_frame": 3.64,
+  "loss_db": 1.6761148039368368,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 100,
+  "k": 5,
+  "overhead_beams_per_frame": 5.64,
+  "loss_db": 1.4953928473482967,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 200,
+  "k": 1,
+  "overhead_beams_per_frame": 0.32,
+  "loss_db": 2.037709289627125,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 200,
+  "k": 3,
+  "overhead_beams_per_frame": 3.32,
+  "loss_db": 1.6761148039368368,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "source",
+  "K": 200,
+  "k": 5,
+  "overhead_beams_per_frame": 5.32,
+  "loss_db": 1.4953928473482967,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 0,
+  "k": 1,
+  "overhead_beams_per_frame": 0.0,
+  "loss_db": 2.037709289627125,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 0,
+  "k": 3,
+  "overhead_beams_per_frame": 3.0,
+  "loss_db": 1.6761148039368368,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 0,
+  "k": 5,
+  "overhead_beams_per_frame": 5.0,
+  "loss_db": 1.4953928473482967,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 10,
+  "k": 1,
+  "overhead_beams_per_frame": 6.4,
+  "loss_db": 0.49029911967999273,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 10,
+  "k": 3,
+  "overhead_beams_per_frame": 9.4,
+  "loss_db": 0.18021042639175627,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 10,
+  "k": 5,
+  "overhead_beams_per_frame": 11.4,
+  "loss_db": 0.11862895787389267,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 20,
+  "k": 1,
+  "overhead_beams_per_frame": 3.2,
+  "loss_db": 0.5362101008165973,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 20,
+  "k": 3,
+  "overhead_beams_per_frame": 6.2,
+  "loss_db": 0.19430542840849135,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 20,
+  "k": 5,
+  "overhead_beams_per_frame": 8.2,
+  "loss_db": 0.1309713610061082,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 50,
+  "k": 1,
+  "overhead_beams_per_frame": 1.28,
+  "loss_db": 0.7357640924487128,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 50,
+  "k": 3,
+  "overhead_beams_per_frame": 4.28,
+  "loss_db": 0.28358410663198164,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 50,
+  "k": 5,
+  "overhead_beams_per_frame": 6.28,
+  "loss_db": 0.18850671799802718,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 100,
+  "k": 1,
+  "overhead_beams_per_frame": 0.64,
+  "loss_db": 1.1457349397910912,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 100,
+  "k": 3,
+  "overhead_beams_per_frame": 3.64,
+  "loss_db": 0.5755970299672876,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 100,
+  "k": 5,
+  "overhead_beams_per_frame": 5.64,
+  "loss_db": 0.3936208432909426,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 200,
+  "k": 1,
+  "overhead_beams_per_frame": 0.32,
+  "loss_db": 1.4406094500944058,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 200,
+  "k": 3,
+  "overhead_beams_per_frame": 3.32,
+  "loss_db": 0.7960468625005728,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "supft",
+  "K": 200,
+  "k": 5,
+  "overhead_beams_per_frame": 5.32,
+  "loss_db": 0.5756620973123499,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 0,
+  "k": 1,
+  "overhead_beams_per_frame": 0.0,
+  "loss_db": 1.7263534553782458,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 0,
+  "k": 3,
+  "overhead_beams_per_frame": 3.0,
+  "loss_db": 1.4455874393828287,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 0,
+  "k": 5,
+  "overhead_beams_per_frame": 5.0,
+  "loss_db": 1.3291576078180736,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 10,
+  "k": 1,
+  "overhead_beams_per_frame": 6.4,
+  "loss_db": 0.9494804210299479,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 10,
+  "k": 3,
+  "overhead_beams_per_frame": 9.4,
+  "loss_db": 0.780408928084912,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 10,
+  "k": 5,
+  "overhead_beams_per_frame": 11.4,
+  "loss_db": 0.7313033959095274,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 20,
+  "k": 1,
+  "overhead_beams_per_frame": 3.2,
+  "loss_db": 1.1212889759616607,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 20,
+  "k": 3,
+  "overhead_beams_per_frame": 6.2,
+  "loss_db": 0.9469144879998601,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 20,
+  "k": 5,
+  "overhead_beams_per_frame": 8.2,
+  "loss_db": 0.8820384943546629,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 50,
+  "k": 1,
+  "overhead_beams_per_frame": 1.28,
+  "loss_db": 1.49827216004902,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 50,
+  "k": 3,
+  "overhead_beams_per_frame": 4.28,
+  "loss_db": 1.1986005149150227,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 50,
+  "k": 5,
+  "overhead_beams_per_frame": 6.28,
+  "loss_db": 1.1089013131581305,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 100,
+  "k": 1,
+  "overhead_beams_per_frame": 0.64,
+  "loss_db": 1.6512786337921637,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 100,
+  "k": 3,
+  "overhead_beams_per_frame": 3.64,
+  "loss_db": 1.3458347971776339,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 100,
+  "k": 5,
+  "overhead_beams_per_frame": 5.64,
+  "loss_db": 1.2480469921601705,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 200,
+  "k": 1,
+  "overhead_beams_per_frame": 0.32,
+  "loss_db": 1.782957138278226,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 200,
+  "k": 3,
+  "overhead_beams_per_frame": 3.32,
+  "loss_db": 1.4435481649461717,
+  "loss_db_std": 0.0,
+  "n": 1
+ },
+ {
+  "method": "sweep-hold",
+  "K": 200,
+  "k": 5,
+  "overhead_beams_per_frame": 5.32,
+  "loss_db": 1.3277783690986236,
+  "loss_db_std": 0.0,
+  "n": 1
+ }
+]

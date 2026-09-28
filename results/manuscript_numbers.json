@@ -1,0 +1,362 @@
+{
+ "cross_site_max_top1": {
+  "value": 0.06428867689755288,
+  "text": "0.064",
+  "source": "E0 max over different-site pairs: gps+cam scenario5->scenario1"
+ },
+ "cross_samespot_max_top1": {
+  "value": 0.36383873361365326,
+  "text": "0.364",
+  "source": "E0 max over same-spot pairs: gps scenario9->scenario8"
+ },
+ "trackA_cross_site_max_dba": {
+  "value": 0.47819922424127315,
+  "text": "0.48",
+  "source": "E0 Track A, different-site pairs, all modalities"
+ },
+ "within_gps_min": {
+  "value": 0.3360907026639269,
+  "text": "0.34",
+  "source": "E0 within-site gps top-1, all scenarios in the matrices"
+ },
+ "within_gps_max": {
+  "value": 0.4923266264550819,
+  "text": "0.49",
+  "source": "E0 within-site gps top-1"
+ },
+ "source_within_min": {
+  "value": 0.40599455040871935,
+  "text": "0.41",
+  "source": "anchored source checkpoints (32, 1), 3 seeds each"
+ },
+ "source_within_max": {
+  "value": 0.553475935828877,
+  "text": "0.55",
+  "source": "anchored source checkpoints (32, 1)"
+ },
+ "det_loss_min": {
+  "value": 0.265,
+  "text": "0.27",
+  "source": "headline det-assoc power loss"
+ },
+ "det_loss_max": {
+  "value": 0.749,
+  "text": "0.75",
+  "source": "headline det-assoc power loss"
+ },
+ "ft_loss_min": {
+  "value": 0.551,
+  "text": "0.55",
+  "source": "headline tuned supft power loss"
+ },
+ "ft_loss_max": {
+  "value": 1.732,
+  "text": "1.73",
+  "source": "headline tuned supft power loss"
+ },
+ "det_minus_ft_loss_A": {
+  "value": 0.28600000000000003,
+  "text": "0.29",
+  "source": "headline difference, dB"
+ },
+ "det_minus_ft_dba_A": {
+  "value": 0.1140000000000001,
+  "text": "0.11",
+  "source": "headline difference, DBA"
+ },
+ "det_minus_ft_loss_B": {
+  "value": 0.983,
+  "text": "0.98",
+  "source": "headline difference, dB"
+ },
+ "det_minus_ft_dba_B": {
+  "value": 0.22299999999999998,
+  "text": "0.22",
+  "source": "headline difference, DBA"
+ },
+ "det_minus_ft_loss_X": {
+  "value": 0.9710000000000001,
+  "text": "0.97",
+  "source": "headline difference, dB"
+ },
+ "det_minus_ft_dba_X": {
+  "value": 0.14500000000000002,
+  "text": "0.15",
+  "source": "headline difference, DBA"
+ },
+ "tta_best_loss_A": {
+  "value": 1.88,
+  "text": "1.88",
+  "source": "headline best TTA loss"
+ },
+ "source_loss_A": {
+  "value": 1.939,
+  "text": "1.94",
+  "source": "headline source loss"
+ },
+ "ft_top1_A": {
+  "value": 0.228,
+  "text": "0.23",
+  "source": "headline supft top-1"
+ },
+ "tta_best_loss_B": {
+  "value": 3.187,
+  "text": "3.19",
+  "source": "headline best TTA loss"
+ },
+ "source_loss_B": {
+  "value": 3.24,
+  "text": "3.24",
+  "source": "headline source loss"
+ },
+ "ft_top1_B": {
+  "value": 0.169,
+  "text": "0.17",
+  "source": "headline supft top-1"
+ },
+ "oh_camera_0meas": {
+  "value": 0.5098535338818658,
+  "text": "0.51",
+  "source": "overhead_trackB sense-geo K=0 k=1"
+ },
+ "oh_camera_5meas": {
+  "value": 0.06497354277880926,
+  "text": "0.06",
+  "source": "overhead_trackB sense-geo K=0 k=5"
+ },
+ "oh_best_learned_loss": {
+  "value": 0.4287981224263467,
+  "text": "0.43",
+  "source": "overhead best learned: calib+supft"
+ },
+ "oh_best_learned_meas": {
+  "value": 11.4,
+  "text": "11.4",
+  "source": "its measurements per frame"
+ },
+ "oh_learned_min_below6": {
+  "value": 1.4960321337913058,
+  "text": "1.5",
+  "source": "min learned loss below 6 measurements/frame"
+ },
+ "oh_hold_min": {
+  "value": 2.880415342327906,
+  "text": "2.9",
+  "source": "sweep-hold loss range"
+ },
+ "oh_hold_max": {
+  "value": 4.046087873016712,
+  "text": "4.0",
+  "source": "sweep-hold loss range"
+ },
+ "geo_w3_no_scenario2": {
+  "value": 0.6402152180671692,
+  "text": "0.64",
+  "source": "fig2_geometry.json"
+ },
+ "geo_w3_yes_scenario2": {
+  "value": 0.9377942085266113,
+  "text": "0.94",
+  "source": "fig2_geometry.json"
+ },
+ "geo_origin_m_scenario2": {
+  "value": 13.584742681075651,
+  "text": "13.6",
+  "source": "fig2_geometry.json |o|"
+ },
+ "geo_w3_no_scenario5": {
+  "value": 0.4769565165042877,
+  "text": "0.48",
+  "source": "fig2_geometry.json"
+ },
+ "geo_w3_yes_scenario5": {
+  "value": 0.8999999761581421,
+  "text": "0.90",
+  "source": "fig2_geometry.json"
+ },
+ "geo_origin_m_scenario5": {
+  "value": 14.297643873209863,
+  "text": "14.3",
+  "source": "fig2_geometry.json |o|"
+ },
+ "geo_w3_min": {
+  "value": 0.8542923927307129,
+  "text": "0.85",
+  "source": "fig2_geometry.json, all 11 scenarios, with origin"
+ },
+ "geo_w3_max": {
+  "value": 0.9888013005256653,
+  "text": "0.99",
+  "source": "fig2_geometry.json"
+ },
+ "geo_K_min": {
+  "value": 36.42158889770508,
+  "text": "36",
+  "source": "fitted codebook scale K"
+ },
+ "geo_K_max": {
+  "value": 63.76761245727539,
+  "text": "64",
+  "source": "fitted codebook scale K"
+ },
+ "cam_bs1_w3_min": {
+  "value": 0.9585798816568047,
+  "text": "0.96",
+  "source": "fig3 off-diagonal within unit BS1"
+ },
+ "cam_bs1_w3_max": {
+  "value": 0.9969727547931383,
+  "text": "1.00",
+  "source": "fig3"
+ },
+ "cam_bs1_top1_min": {
+  "value": 0.2144638403990025,
+  "text": "0.21",
+  "source": "fig3"
+ },
+ "cam_bs1_top1_max": {
+  "value": 0.3632694248234107,
+  "text": "0.36",
+  "source": "fig3"
+ },
+ "cam_bs1_self_top1_min": {
+  "value": 0.27692307692307694,
+  "text": "0.28",
+  "source": "fig3 diagonal (in-sample)"
+ },
+ "cam_bs1_self_top1_max": {
+  "value": 0.37554395126196694,
+  "text": "0.38",
+  "source": "fig3 diagonal"
+ },
+ "cam_1_to_8_w3": {
+  "value": 0.4265402843601896,
+  "text": "0.43",
+  "source": "fig3"
+ },
+ "cam_1_to_6_w3": {
+  "value": 0.7765607886089814,
+  "text": "0.78",
+  "source": "fig3"
+ },
+ "det_match_min_pct": {
+  "value": 98.5781990521327,
+  "text": "98.6",
+  "source": "detector_match.json"
+ },
+ "det_match_max_pct": {
+  "value": 100.0,
+  "text": "100",
+  "source": "detector_match.json"
+ },
+ "det_per_frame_min": {
+  "value": 1.1866197183098592,
+  "text": "1.2",
+  "source": "detector_match.json"
+ },
+ "det_per_frame_max": {
+  "value": 12.0,
+  "text": "12",
+  "source": "detector_match.json"
+ },
+ "xu_refit_top1": {
+  "value": 0.21556445267502397,
+  "text": "0.216",
+  "source": "G3"
+ },
+ "xu_refit_dba": {
+  "value": 0.786911033202725,
+  "text": "0.787",
+  "source": "G3"
+ },
+ "xu_fixed_top1": {
+  "value": 0.10566275640803775,
+  "text": "0.106",
+  "source": "G3"
+ },
+ "xu_fixed_dba": {
+  "value": 0.5681746002593572,
+  "text": "0.568",
+  "source": "G3"
+ },
+ "xu_refit_loss": {
+  "value": 0.6111091599863047,
+  "text": "0.61",
+  "source": "G3"
+ },
+ "xu_offset_loss": {
+  "value": 0.7532264816158811,
+  "text": "0.75",
+  "source": "G3"
+ },
+ "e4_gap_K10": {
+  "value": 0.018699306241499403,
+  "text": "0.02",
+  "source": "E4v22 K=10, 3 seeds"
+ },
+ "e4_gap_K100": {
+  "value": 0.10778022159650967,
+  "text": "0.11",
+  "source": "E4v22 K=100, 3 seeds"
+ },
+ "e4_ft_K100": {
+  "value": 0.11266990431772421,
+  "text": "0.11",
+  "source": "E4v22 supft K=100"
+ },
+ "abl_fixed_loss_B": {
+  "value": 0.955,
+  "text": "0.95",
+  "source": "ablation Track B fixed map"
+ },
+ "abl_fixed_loss_X": {
+  "value": 1.513,
+  "text": "1.51",
+  "source": "ablation cross-unit fixed map"
+ },
+ "abl_annot_loss_B": {
+  "value": 0.324,
+  "text": "0.32",
+  "source": "ablation Track B annotated box, refit"
+ },
+ "abl_pipe_loss_B": {
+  "value": 0.749,
+  "text": "0.75",
+  "source": "ablation Track B pipeline"
+ },
+ "abl_nosweep_loss_min": {
+  "value": 0.477,
+  "text": "0.48",
+  "source": "ablation no-sweep variant"
+ },
+ "abl_nosweep_loss_max": {
+  "value": 1.522,
+  "text": "1.52",
+  "source": "ablation no-sweep variant"
+ },
+ "abl_hold_loss_min": {
+  "value": 3.556,
+  "text": "3.56",
+  "source": "ablation last sweep held"
+ },
+ "abl_hold_loss_max": {
+  "value": 5.071,
+  "text": "5.07",
+  "source": "ablation last sweep held"
+ },
+ "lat_det_min": {
+  "value": 0.46731562179047614,
+  "text": "0.5",
+  "source": "D1-D3 det-assoc ms/frame (GPU, after detection)"
+ },
+ "lat_det_max": {
+  "value": 1.2476687406888232,
+  "text": "1.2",
+  "source": "D1-D3"
+ },
+ "lat_cpu_bs1_calib": {
+  "value": 1.8205500091426075,
+  "text": "1.8",
+  "source": "E5 CPU bs1 v2"
+ }
+}

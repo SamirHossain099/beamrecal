@@ -1,0 +1,60 @@
+{
+ "ckpt": "N:/Projects/isac/01-tta-beam-prediction/checkpoints/src_scenario1_gps-cam_s1.pt",
+ "source": [
+  "scenario1"
+ ],
+ "stream": [
+  "scenario7",
+  "scenario6",
+  "scenario5",
+  "scenario2"
+ ],
+ "bs": 16,
+ "sweep_every": 20,
+ "seed": 1,
+ "kw": [
+  "lr=1e-3",
+  "params=all"
+ ],
+ "device": "cuda",
+ "max_frames": 0,
+ "methods": {
+  "supft": {
+   "scenario7": {
+    "top1": 0.0468384074941452,
+    "top3": 0.1358313817330211,
+    "dba": 0.2864168636692771,
+    "ploss_db": 1.8009079211768837,
+    "n": 854
+   },
+   "scenario6": {
+    "top1": 0.12786885245901639,
+    "top3": 0.28743169398907104,
+    "dba": 0.5594171224396085,
+    "ploss_db": 1.5796493585643872,
+    "n": 915
+   },
+   "scenario5": {
+    "top1": 0.20217391304347826,
+    "top3": 0.38130434782608696,
+    "dba": 0.613942029968552,
+    "ploss_db": 1.8530420911830405,
+    "n": 2300
+   },
+   "scenario2": {
+    "top1": 0.24983187626092804,
+    "top3": 0.4919300605245461,
+    "dba": 0.706971535665843,
+    "ploss_db": 1.421007020262439,
+    "n": 2974
+   },
+   "mean": {
+    "top1": 0.15667826231439197,
+    "top3": 0.32412437101818126,
+    "dba": 0.5416868879358201,
+    "ploss_db": 1.6636515977966877
+   },
+   "latency_ms_per_frame": 0.4679374978877604
+  }
+ }
+}

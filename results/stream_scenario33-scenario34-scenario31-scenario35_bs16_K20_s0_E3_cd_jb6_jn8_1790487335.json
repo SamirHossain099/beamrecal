@@ -1,0 +1,64 @@
+{
+ "ckpt": "N:/Projects/isac/01-tta-beam-prediction/checkpoints/src_scenario32_gps-cam_anchored_s0.pt",
+ "source": [
+  "scenario32"
+ ],
+ "stream": [
+  "scenario33",
+  "scenario34",
+  "scenario31",
+  "scenario35"
+ ],
+ "bs": 16,
+ "sweep_every": 20,
+ "seed": 0,
+ "kw": [
+  "jump_beams=6.0",
+  "jump_n=8"
+ ],
+ "methods": {
+  "calib+gate+camnorm": {
+   "scenario33": {
+    "top1": 0.22456669178598343,
+    "top3": 0.6068826927907561,
+    "dba": 0.770241995562683,
+    "ploss_db": 0.42630676155981484,
+    "n": 3981
+   },
+   "scenario34": {
+    "top1": 0.27506195088984003,
+    "top3": 0.6893444469475107,
+    "dba": 0.8072539042529557,
+    "ploss_db": 0.3000425099789438,
+    "n": 4439
+   },
+   "scenario31": {
+    "top1": 0.2572732458642327,
+    "top3": 0.6796919566457501,
+    "dba": 0.806911979676041,
+    "ploss_db": 0.2065211901716416,
+    "n": 7012
+   },
+   "scenario35": {
+    "top1": 0.18489326765188835,
+    "top3": 0.4972085385878489,
+    "dba": 0.6991571004363312,
+    "ploss_db": 0.4195241614515558,
+    "n": 3045
+   },
+   "mean": {
+    "top1": 0.23544878904798616,
+    "top3": 0.6182819087429665,
+    "dba": 0.7708912449820028,
+    "ploss_db": 0.33809865579048903
+   },
+   "latency_ms_per_frame": 1.3241812484920956,
+   "calibrator_resets": 5,
+   "prior_final": {
+    "c0": 25.9013671875,
+    "K": 35.606689453125,
+    "theta": 0.6753685474395752
+   }
+  }
+ }
+}
