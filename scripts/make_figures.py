@@ -87,7 +87,7 @@ def fig2():
     from tta_beam.data import load_scenario
     from tta_beam.models import PhysicsPrior
     data, colors = {}, plt.cm.tab20(np.linspace(0, 1, len(GEO_SCEN)))
-    fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.0, 2.9), gridspec_kw={"wspace": 0.38})
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.0, 2.5), gridspec_kw={"wspace": 0.38})
     for i, s in enumerate(GEO_SCEN):
         d = load_scenario(s)
         g, y = torch.as_tensor(d["gps"]), torch.as_tensor(d["y"])
@@ -165,7 +165,7 @@ NAMES = {"sense-geo": "camera map, zero target labels", "sense-geo+calib": "came
 def fig4():
     rows = json.loads((R / "overhead_trackB.json").read_text())
     # full width with the legend at the side: a one-column version needs a legend taller than the plot
-    fig, ax = plt.subplots(figsize=(4.6, 2.3))
+    fig, ax = plt.subplots(figsize=(4.6, 2.0))
     styles = {"sense-geo": "k-", "sense-geo+calib": "k--", "offset-ma": "k:", "cam-assoc": "k-.",
               "calib+gate+norm": "C0-", "calib+supft": "C0--", "supft": "C1-", "tent": "C2-", "source": "C3-", "sweep-hold": "C4-"}
     for m, st in styles.items():
@@ -191,7 +191,7 @@ def fig4():
 # ------------------------------------------------------------------ figure 5: pinhole map vs MLP on x
 def fig5():
     rows = json.loads((R / "xmlp_curve.json").read_text())
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.5), gridspec_kw={"wspace": 0.28})
+    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.15), gridspec_kw={"wspace": 0.28})
     styles = {"sense-geo": ("k", "--", "pinhole map, no target labels"),
               "sense-geo+calib": ("k", "-", "pinhole map refitted on sweeps"),
               "xmlp": ("C0", "--", "MLP on the same input, no target labels"),
@@ -217,7 +217,7 @@ def fig5():
 # ------------------------------------------------------------------ figure 6: degraded position reports
 def fig6():
     rows = json.loads((R / "position.json").read_text())
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.4), gridspec_kw={"wspace": 0.28}, sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.1), gridspec_kw={"wspace": 0.28}, sharey=True)
     streams = {"track_a": ("C0", "Track A"), "track_b": ("C1", "Track B"), "cross_unit": ("C2", "cross-unit")}
     for ax, (kind, xlab, title) in zip(axes, (("delay", "delay of the reported position (frames, about 0.1 s each)",
                                                 "(a) delayed position"),

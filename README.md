@@ -7,13 +7,16 @@ Deployment Shift* (Samir Hossain, Texas Tech University).
 
 A beam predictor trained on sensing data (position, camera, radar) at one DeepSense 6G site fails at
 another: cross-site top-1 accuracy is at most 0.064, and six test-time adaptation methods (norm
-statistics, Tent, EATA, SAR, CoTTA, T3A) leave it there. The shift is geometric. The map from sensed
-position to beam index is rotated by the orientation of the array and shifted by an error of the
-logged base-station position. Modeling that geometry and refitting a few physical parameters from the
-periodic beam sweeps a base station already performs transfers where learning does not.
+statistics, Tent, EATA, SAR, CoTTA, T3A) keep it at or below 0.079. The shift is geometric. The map from
+sensed position to beam index is rotated by the orientation of the array and shifted by an error of the
+logged base-station position. What transfers is an input tied to the unit's geometry, the vehicle's
+position in the camera image: a pinhole map or a small network on it carries over between sites of one
+unit. The physical form is the better one to recalibrate: refitted from the periodic beam sweeps a base
+station already performs, it loses less received power than the network fine-tuned on the same sweeps.
 
-Every number in the paper is computed from `results/` by a script and pinned by a test
-(`tests/test_manuscript.py`); `results/headline.json` and `results/ablation.json` generate Tables 2 and 3.
+Every number in the paper is computed from `results/` by a script; `tests/test_results.py` recomputes the
+aggregated tables (`headline.json`, `ablation.json`) from the per-run files, and
+`python scripts/manuscript_numbers.py` reproduces every number quoted in the paper.
 
 ## Layout
 
