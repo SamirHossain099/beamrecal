@@ -296,7 +296,8 @@ class DetAssoc(Method):
     needs_source = True
     name = "det-assoc"
 
-    def __init__(self, model, src=None, selfcal=False, refit_map=True, sigma=2.0, **kw):
+    def __init__(self, model, src=None, selfcal=False, refit_map=True, sigma=2.0, pos_delay=0, pos_noise_m=0.0,
+                 pos_seed=0, **kw):
         assert hasattr(model, "prior"), "det-assoc needs an anchored checkpoint (for the GPS prior)"
         assert "det_boxes" in src, "run scripts/detect_vehicles.py on the source scenario first"
         self.model = copy.deepcopy(model).eval()
@@ -307,9 +308,32 @@ class DetAssoc(Method):
         self.selfcal, self.refit_map, self.sigma = selfcal, refit_map, sigma
         self.dev = next(model.parameters()).device
         self.chosen = None
+        # Degraded position reporting, applied wherever the pipeline reads the position (box selection and
+        # sweep calibration): the reported position is the one `pos_delay` frames earlier in the same pass
+        # (the first frame of the pass until that many have passed), plus independent Gaussian noise of
+        # `pos_noise_m` metres per axis. Positions are in the loader's /30 m units.
+        self.pos_delay, self.pos_noise = int(pos_delay), float(pos_noise_m) / 30.0
+        self.pos_rng = np.random.default_rng(pos_seed)
+        self.hist, self.rep_gps = {}, None
+
+    def _reported(self, b):
+        g = b["gps"]
+        if not self.pos_delay and not self.pos_noise:
+            return g
+        true = g.cpu().numpy()
+        out = np.empty_like(true)
+        for i, s in enumerate(b["seq"].tolist()):
+            h = self.hist.setdefault(s, [])
+            h.append(true[i])
+            out[i] = h[max(0, len(h) - 1 - self.pos_delay)]
+        if self.pos_noise:
+            out = out + self.pos_rng.normal(0.0, self.pos_noise, out.shape).astype(out.dtype)
+        return torch.as_tensor(out, device=g.device)
 
     @torch.no_grad()
     def step(self, b):
+        self.rep_gps = self._reported(b)
+        b = {**b, "gps": self.rep_gps}
         gps_mu = self.model.prior.mean_beam(b["gps"]).cpu().numpy()
         xs = b["det_boxes"].cpu().numpy()
         mus = self.map.mean(np.nan_to_num(xs, nan=-9.0))
@@ -320,6 +344,8 @@ class DetAssoc(Method):
         return self.map.logits(x, self.sigma, fallback=self.model.prior(b["gps"]).cpu().numpy()).to(self.dev)
 
     def feedback(self, b, fb):
+        if self.rep_gps is not None:
+            b = {**b, "gps": self.rep_gps}      # the base station only ever has the reported position
         if self.selfcal:
             ok = np.isfinite(self.chosen)
             if ok.any():

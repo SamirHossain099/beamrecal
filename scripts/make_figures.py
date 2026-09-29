@@ -214,6 +214,33 @@ def fig5():
     save(fig, "fig5_mlp_control")
 
 
+# ------------------------------------------------------------------ figure 6: degraded position reports
+def fig6():
+    rows = json.loads((R / "position.json").read_text())
+    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.4), gridspec_kw={"wspace": 0.28}, sharey=True)
+    streams = {"track_a": ("C0", "Track A"), "track_b": ("C1", "Track B"), "cross_unit": ("C2", "cross-unit")}
+    for ax, (kind, xlab, title) in zip(axes, (("delay", "delay of the reported position (frames, about 0.1 s each)",
+                                                "(a) delayed position"),
+                                               ("noise", "noise on the reported position (m per axis)",
+                                                "(b) noisy position"))):
+        for s, (c, lab) in streams.items():
+            rr = sorted([r for r in rows if r["stream"] == s and r["kind"] == kind], key=lambda r: r["level"])
+            ax.errorbar([r["level"] for r in rr], [r["ploss_db"] for r in rr], yerr=[r["ploss_db_std"] for r in rr],
+                        color=c, lw=0.9, marker="o", ms=2.5, capsize=1.5, label=f"pipeline, {lab}")
+            ax.axhline(rr[0]["supft_ploss_db"], color=c, lw=0.7, ls=":", label=f"tuned fine-tuning, {lab}")
+        ax.set_xlabel(xlab)
+        ax.set_xticks(sorted({r["level"] for r in rows if r["kind"] == kind}))
+        ax.set_ylim(0, 1.1 * max(max(r["ploss_db"] + r["ploss_db_std"] for r in rows),
+                                 max(r["supft_ploss_db"] for r in rows)))
+        ax.set_title(title, fontsize=9, loc="left")
+    axes[0].set_ylabel("received-power loss (dB)")
+    h, lab = axes[0].get_legend_handles_labels()
+    order = [i for i, x in enumerate(lab) if x.startswith("pipeline")] +             [i for i, x in enumerate(lab) if not x.startswith("pipeline")]
+    fig.legend([h[i] for i in order], [lab[i] for i in order], fontsize=7.5, frameon=False, ncol=2,
+               loc="upper center", bbox_to_anchor=(0.5, -0.06))
+    save(fig, "fig6_position")
+
+
 # ------------------------------------------------------------------ detector vs annotation (numbers only)
 def detector_match():
     from tta_beam.geo import load_cam_x, load_det_boxes
@@ -232,6 +259,6 @@ def detector_match():
 
 
 if __name__ == "__main__":
-    which = sys.argv[1:] or ["fig1", "fig2", "fig3", "fig4", "fig5", "detector_match"]
+    which = sys.argv[1:] or ["fig1", "fig2", "fig3", "fig4", "fig5", "fig6", "detector_match"]
     for w in which:
         globals()[w]()

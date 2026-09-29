@@ -109,6 +109,11 @@
   "text": "0.06",
   "source": "overhead_trackB sense-geo K=0 k=5"
  },
+ "oh_camera_5meas_pct": {
+  "value": 7.8125,
+  "text": "8",
+  "source": "its measurements as % of a 64-beam sweep"
+ },
  "oh_best_learned_loss": {
   "value": 0.4287981224263467,
   "text": "0.43",
@@ -418,6 +423,66 @@
   "value": 0.21556445267502397,
   "text": "0.216",
   "source": "pinhole refit, same"
+ },
+ "pos_d5_rise_max": {
+  "value": 0.0779403602817954,
+  "text": "0.08",
+  "source": "delay 5 frames"
+ },
+ "pos_d20_min": {
+  "value": 0.8179823982033438,
+  "text": "0.82",
+  "source": "delay 20 frames"
+ },
+ "pos_d20_max": {
+  "value": 1.5946684353488558,
+  "text": "1.59",
+  "source": "delay 20"
+ },
+ "pos_n2_rise_min": {
+  "value": 0.10541284616176916,
+  "text": "0.11",
+  "source": "2 m noise"
+ },
+ "pos_n2_rise_max": {
+  "value": 0.1302462631160478,
+  "text": "0.13",
+  "source": "2 m noise"
+ },
+ "pos_n10_min": {
+  "value": 0.9131963050853029,
+  "text": "0.91",
+  "source": "10 m noise"
+ },
+ "pos_n10_max": {
+  "value": 1.8656155319599568,
+  "text": "1.87",
+  "source": "10 m noise"
+ },
+ "pos_B_d2": {
+  "value": 0.535554990741534,
+  "text": "0.54",
+  "source": "Track B, delay 2 frames"
+ },
+ "pos_s5_min": {
+  "value": 0.7151445159013722,
+  "text": "0.72",
+  "source": "scenario 5 loss, delays 0-10"
+ },
+ "pos_s5_max": {
+  "value": 1.40677960805271,
+  "text": "1.41",
+  "source": "same"
+ },
+ "lag_behind_max": {
+  "value": 3.0,
+  "text": "3",
+  "source": "positions lag labels by up to this many frames"
+ },
+ "lag_ahead_max": {
+  "value": 4.0,
+  "text": "4",
+  "source": "positions lead labels by up to this many frames"
  },
  "lat_det_min": {
   "value": 0.46731562179047614,

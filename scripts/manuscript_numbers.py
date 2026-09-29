@@ -115,6 +115,7 @@ def main():
     sg5 = next(r for r in oh if r["method"] == "sense-geo" and r["K"] == 0 and r["k"] == 5)
     put("oh_camera_0meas", sg0["loss_db"], "{:.2f}", "overhead_trackB sense-geo K=0 k=1")
     put("oh_camera_5meas", sg5["loss_db"], "{:.2f}", "overhead_trackB sense-geo K=0 k=5")
+    put("oh_camera_5meas_pct", 100 * sg5["overhead_beams_per_frame"] / 64, "{:.0f}", "its measurements as % of a 64-beam sweep")
     learned = [r for r in oh if r["method"] in ("calib+gate+norm", "calib+supft", "supft", "tent", "source")]
     best_learned = min(learned, key=lambda r: r["loss_db"])
     put("oh_best_learned_loss", best_learned["loss_db"], "{:.2f}", f"overhead best learned: {best_learned['method']}")
@@ -238,6 +239,28 @@ def main():
     put("pin_refit_loss_B_K200", cv[("track_b", 200, "sense-geo+calib")]["ploss_db"], "{:.2f}", "pinhole refit, K=200")
     put("xmlp_ft_top1_X", cv[("cross_unit", 20, "xmlp+ft")]["top1"], "{:.3f}", "MLP fine-tuned, cross-unit top-1, K=20")
     put("pin_refit_top1_X", cv[("cross_unit", 20, "sense-geo+calib")]["top1"], "{:.3f}", "pinhole refit, same")
+
+    # --- degraded position reports (results/position.json, position_lag.json; Section 5.8, Figure 6) ------
+    ps = {(r["stream"], r["kind"], r["level"]): r for r in json.loads((R / "position.json").read_text())}
+    SS = ("track_a", "track_b", "cross_unit")
+    base = {s_: ps[(s_, "delay", 0)]["ploss_db"] for s_ in SS}
+    put("pos_d5_rise_max", max(ps[(s_, "delay", 5)]["ploss_db"] - base[s_] for s_ in SS), "{:.2f}", "delay 5 frames")
+    d20 = [ps[(s_, "delay", 20)]["ploss_db"] for s_ in SS]
+    put("pos_d20_min", min(d20), "{:.2f}", "delay 20 frames"); put("pos_d20_max", max(d20), "{:.2f}", "delay 20")
+    n2 = [ps[(s_, "noise", 2)]["ploss_db"] - base[s_] for s_ in SS]
+    put("pos_n2_rise_min", min(n2), "{:.2f}", "2 m noise"); put("pos_n2_rise_max", max(n2), "{:.2f}", "2 m noise")
+    n10 = [ps[(s_, "noise", 10)]["ploss_db"] for s_ in SS]
+    put("pos_n10_min", min(n10), "{:.2f}", "10 m noise"); put("pos_n10_max", max(n10), "{:.2f}", "10 m noise")
+    put("pos_B_d2", ps[("track_b", "delay", 2)]["ploss_db"], "{:.2f}", "Track B, delay 2 frames")
+    s5 = []
+    for tag in ["_D2_trackB_det_K20"] + [f"_P1_B_delay{d}" for d in (2, 5, 10, 20)] + [f"_P1_B_noise{n}" for n in (2, 5, 10)]:
+        v = [json.loads(f.read_text())["methods"]["det-assoc"]["scenario5"]["ploss_db"] for f in R.glob(f"stream_*{tag}_*.json")]
+        s5.append(float(np.mean(v)))
+    put("pos_s5_min", min(s5[:4]), "{:.2f}", "scenario 5 loss, delays 0-10"); put("pos_s5_max", max(s5[:4]), "{:.2f}", "same")
+    lag = json.loads((R / "position_lag.json").read_text())
+    bl = [v["best_lag"] for v in lag.values()]
+    put("lag_behind_max", -min(bl), "{:.0f}", "positions lag labels by up to this many frames")
+    put("lag_ahead_max", max(bl), "{:.0f}", "positions lead labels by up to this many frames")
 
     # --- latency ----------------------------------------------------------------------------------------
     lat = [json.loads(f.read_text())["methods"]["det-assoc"]["latency_ms_per_frame"] for tag in ("_D1_trackA_det_K20", "_D2_trackB_det_K20", "_D3_crossunit_det_K20")
