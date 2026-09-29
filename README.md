@@ -1,5 +1,7 @@
 # beamrecal: geometric recalibration for sensing-aided mmWave beam prediction
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23021570.svg)](https://doi.org/10.5281/zenodo.23021570)
+
 Code and results for *Geometric Recalibration for Sensing-Aided Millimeter-Wave Beam Prediction Under
 Deployment Shift* (Samir Hossain, Texas Tech University).
 
@@ -45,6 +47,10 @@ python scripts/write_manuscript_table.py && python -m pytest tests/ -q
 The streams are Track A (source 32; stream 33, 34, 31, 35), Track B (source 1; stream 2, 5, 6, 7) and
 cross-unit (source 1; stream 8, 9, 6). `python scripts/run_stream.py --help` lists the methods. A
 synthetic smoke test needs no data: `python scripts/train_source.py --synthetic --source syn32`.
+
+## Citing
+
+Cite the concept DOI, which always resolves to the latest release: https://doi.org/10.5281/zenodo.23021570. `CITATION.cff` has the full entry.
 
 ## License
 

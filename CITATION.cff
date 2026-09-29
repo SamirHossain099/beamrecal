@@ -14,9 +14,17 @@ authors:
     family-names: Hossain
     orcid: "https://orcid.org/0009-0003-8986-0946"
     affiliation: "Department of Electrical and Computer Engineering, Texas Tech University"
-version: 1.0.0
+version: 1.0.1
 license: MIT
 repository-code: "https://github.com/SamirHossain099/beamrecal"
+doi: "10.5281/zenodo.23021570"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23021570"
+    description: Concept DOI, always resolves to the latest release. Cite this one.
+  - type: doi
+    value: "10.5281/zenodo.23021571"
+    description: Version DOI for v1.0.0 specifically.
 keywords:
   - beam prediction
   - millimeter wave
